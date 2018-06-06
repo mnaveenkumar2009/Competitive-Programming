@@ -16,12 +16,18 @@ using namespace std;
 inline ll uscan()
 {
     ll n=0,c=gc();
-while(c<'0'||c>'9')
-c=gc();
-while(c<='9'&&c>='0'){
-n=n*10+c-'0';
-c=gc();}
-return n;
+    bool check=0;
+    if(c=='-')check=1;
+    while(c<'0'||c>'9')
+    {
+        c=gc();
+        if(c=='-')check=1;
+    }
+    while(c<='9'&&c>='0'){
+        n=n*10+c-'0';
+        c=gc();
+    }
+    return n+(-2*check*n);
 }
 int main()
 {
