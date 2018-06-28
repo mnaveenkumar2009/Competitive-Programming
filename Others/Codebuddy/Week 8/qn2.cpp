@@ -16,6 +16,7 @@ void topodfs(int pos){
 int main(){
     string s1,s2;
     int n1,n2;
+    cin>>s1;
     while(cin>>s2){//s1<s2
         n1=s1.length();
         n2=s2.length();
