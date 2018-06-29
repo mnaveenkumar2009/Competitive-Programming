@@ -81,7 +81,6 @@ int ans(int pos){
 
 int main(){
     precompute();
-    
     string s;
     cin>>s;
     n=s.length();
