@@ -9,8 +9,7 @@ Output : -1
 0 is not a power of  4 or 6.
 */
 
-// nlogn precompute
-// complexity upper bound : n^2 but breaks much before
+// n^2
 #include <bits/stdc++.h>
 using namespace std;
 
