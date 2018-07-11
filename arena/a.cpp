@@ -65,42 +65,39 @@ int main()
     while(m--){
         ll l,r,p;
         if(uscan()==1){
-            l=uscan();
-            r=uscan();
+            l=uscan()-1;
+            r=uscan()-1;
             p=uscan();
-            modify(l-1,r,p);
+            modify(l,r+1,p);
         }
         else{
-            l=uscan();
-            r=l;
-            l--;
+            l=uscan()-1;
             p=uscan();
             a[l]=p;
+            ll l2=l;
             p=2;
+            r=l+1;
             ll sdhg=query(0,l+1,p);
             for (t[p][l += n] -=sdhg ; l > 1; l >>= 1) t[p][l>>1] = t[p][l] + t[p][l^1];
             if(r!=n){
               for (t[p][r += n] +=sdhg ; r > 1; r >>= 1) t[p][r>>1] = t[p][r] + t[p][r^1];
             }
             p=3;
+            l=l2;
             r=l+1;
             sdhg=query(0,l+1,p);
-            // cout<<sdhg<<' '<<t[p][l + n]<<' '<<l<<' '<<r<<' '<<p<<'\n';
             for (t[p][l += n] -=sdhg ; l > 1; l >>= 1) t[p][l>>1] = t[p][l] + t[p][l^1];
             if(r!=n){
               for (t[p][r += n] +=sdhg ; r > 1; r >>= 1) t[p][r>>1] = t[p][r] + t[p][r^1];
             }
             p=5;
-            sdhg=query(0,l+1,p);
+            l=l2;
             r=l+1;
+            sdhg=query(0,l+1,p);
             for (t[p][l += n] -=sdhg ; l > 1; l >>= 1) t[p][l>>1] = t[p][l] + t[p][l^1];
             if(r!=n){
               for (t[p][r += n] +=sdhg ; r > 1; r >>= 1) t[p][r>>1] = t[p][r] + t[p][r^1];
             }
-
-            // f(i,2*n)cout<<t[2][i]<<' ';cout<<'\n';
-            // f(i,2*n)cout<<t[3][i]<<' ';cout<<'\n';
-            // f(i,2*n)cout<<t[5][i]<<' ';cout<<'\n';
         }
 
 
