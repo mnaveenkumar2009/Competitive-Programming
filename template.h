@@ -26,11 +26,3 @@ inline ll uscan()
     }
     return n+(-2*check*n);
 }
-int main()
-{
-    int t=uscan();
-    while(t--){
-        ll n,i,j;
-    }
-	return 0;
-}
