@@ -6,6 +6,17 @@ struct Node{
     struct Node *next;
 };
 
+void reverse(struct Node * node){
+    
+    struct Node* curr=node, *nex=node->next,*prev=0;
+
+    while(curr){
+        nex=curr->next;
+        curr->next=prev;
+        prev=curr;
+        curr= nex;
+    }
+}
 void traverse(struct Node * node){
     cout<<(node->value);
     if(node->next!=0){
@@ -22,6 +33,7 @@ int main(){
     head.next=&second;
     second.next=&third;
     third.next=0;
-    traverse(&head);
+    reverse(&head);
+    traverse(&third);
     pc('\n');
 }
