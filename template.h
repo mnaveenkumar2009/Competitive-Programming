@@ -26,3 +26,4 @@ inline ll uscan()
     }
     return n+(-2*check*n);
 }
+#define sc uscan()
