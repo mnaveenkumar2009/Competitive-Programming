@@ -70,10 +70,34 @@ void prin(vector <vector <pair <ll,ll> > > a){
     pc('\n');
 }
 
-
 int main()
 {
-    ll t=sc;
+    int t=sc;
+    while(t--){
+        ll i,j,k,n=sc,m=sc;
+        string s,s2;
+        cin>>s>>s2;
+        vector <ll> a1(26,0),a2(26,0);
+        f(i,n){
+            a1[s[i]-'a']++;
+        }
+        f(i,m){
+            a2[s2[i]-'a']++;
+        }
+        ll  ans=INT_MAX;
+        f(i,26){
+            f(j,26){
+                if(i!=j){
+                    ll tem=n-a1[i]+m-a2[j];
+                    // if(i==25&&j==24){
+                    //     cout<<tem<<'\n';
+                    // }
+                    ans=min(ans,tem);
+                }
+            }
+        }
+        cout<<ans<<'\n';
+    }
 
     return 0;
 }

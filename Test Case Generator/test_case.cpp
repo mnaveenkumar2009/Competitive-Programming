@@ -6,23 +6,18 @@ using namespace std;
 #define gc getchar
 #define ll long long
 
-ll ran(){
-    return rand()%((ll)1e9)+1;
+ll ran(ll modu){
+    return (rand()%modu)+1;
 }
 int main()
 {
     ll i,j;
     
     srand(time(NULL));
-    ll n=1000;
+    ll n=1e5-rand()%3;
     cout<<n<<'\n';
-    vector <ll> a(n);
-    f(i,n)a[i]=i+1;
-    random_shuffle ( a.begin(), a.end() );
     f(i,n){
-        cout<<a[i]<<' ';
-    }pc('\n');
-
-    
+        cout<<(ll)(ran(2e9)-1e9)<<' ';
+    }
    	return 0;
 }
