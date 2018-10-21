@@ -55,119 +55,87 @@ void prin(vector <vector <pair <ll,ll> > > a){
     }
     pc('\n');
 }
-string has(ll a,ll b,ll c){
-    ll d=0;
-    string ans;
-    while(a!=0){
-        ans.pb(a%255);
-        a/=255;
-    }
-    ans.pb(255);
-    while(b!=0){
-        ans.pb(b%255);
-        b/=255;
-    }
-    ans.pb(255);
-    while(c!=0){
-        ans.pb(c%255);
-        c/=255;
-    }
-    ans.pb(255);
-    while(d!=0){
-        ans.pb(d%255);
-        d/=255;
-    }
-    ans.pb(255);
-
-    return ans;
-}
 int main()
 {
     ll n=sc,m=sc;
     vvl a(n,vl (m));
-    
-    vector <vector <vector <bool > > > xxx(n,vector <vector <bool > >(n,vector <bool > (m,0)));
     ll i,j,k;
     ll ans=0;
-    f(i,n){
-        f(j,m){
-            a[i][j]=sc;
-        }
-    }
+
+
+    // this times out .. remember to remove it and replace it with direct formula
     f(i,n){
         f(j,n){
             if(j>=i)
                 ans+=((j-i+1)*m*(m+1))/2;
         }
     }
-    // cout<<ans<<'\n';
+    
     f(i,n){
-        f(j,n){
-            if(j>i){
-                // row i,j
-                ll temp=0;
-                ll cn=0;
-                f(k,m){
-                    if(a[i][k]==a[j][k]){
-                        cn++;
-                        xxx[i][j][k]=1;
-                    }
-                    else{
-                        cn=0;
-                    }
-                }
-                if(cn){
-                    cn=0;
-                }
+        f(j,m){
+            a[i][j]=sc;
+        }
+    }
+    f(j,m){
+        unordered_map <ll,ll> xxx;
+        f(i,n){
+            if(xxx[a[i][j]])
+                a[i][j]=(xxx[a[i][j]]);
+            else{
+                xxx[a[i][j]]=i+1;
+                a[i][j]=i+1;
             }
         }
     }
     f(i,n){
-        f(j,n){
-            if(j>i){
-                // row i,j
-                ll temp=0;
-                ll cn=0;
-                ll lass=i-1;
-                f(k,m){
-                    if(a[i][k]==a[j][k]){
-                        cn++;
-                        ll pos1,pos2=n;
-                        for (pos1=lass;pos1>=0;pos1--){
-                            if(xxx[pos1][i][k]){
-                                break;
-                            }
-                        }
-                        lass=pos1;
-                        // for (pos2=j+1;pos2<n;pos2++){
-                        //     if(xxx[i][pos2][k]){
-                        //         break;
-                        //     }
-                        // }
-                        ll xyz=1;
-                        temp+=(cn)*(i-pos1)*(pos2-j);
-                        // cout<<temp<<' '<<pos1<<' '<<pos2<<'s'<<'\n';
-                    }
-                    else{
-                        cn=0;
-                        lass=i-1;
-                    }
-                }
-                                
-                // temp*=(i-pos1)*(pos2-j);
-                // cout<<i<<' '<<j<<' '<<temp<<'\n';
-                ans-=temp;
-            }
+        f(j,m)
+            a[i][j]--;
+    }
+    // prin(a);
+    vector <ll> xxx[m][n];
+    f(j,m){
+        f(i,n){
+            xxx[j][a[i][j]].pb(i);
+        }
+        f(i,n){            
+            xxx[j][i].pb(n+1);
         }
     }
 
+    // f(j,m){
+    //     f(i,n){
+    //         prin(xxx[j][i]);
+    //     }
+    // }
+
+    f(i,n){
+        vector <ll> poss[n];
+        f(j,m){
+            ll pos=*upper_bound(xxx[j][a[i][j]].begin(),xxx[j][a[i][j]].end(),i);
+            if(pos==n+1)continue;
+            //leftmost conti with pos
+            poss[pos].pb(j);
+            ll low=0,high=poss[pos].size()-1;
+            while(low!=high){
+                ll mid=(low+high)/2;
+                // if cont with mid
+                bool we=0;
+                if(j-poss[pos][mid]==poss[pos].size()-1-mid){
+                    we=1;
+                }
+                if(we){
+                    high=mid;
+                }
+                else{
+                    low=mid+1;
+                }
+            }
+            // cout<<pos<<' '<<low<<'\n';
+            ll dista=j+1-poss[pos][low];
+            ans-=(dista)*(i+1-0)*(n-pos);//ending at k
+        }
+    }
+    
     cout<<ans;
     return 0;
 }
-
-/*
-3 3
-1 2 3
-1 2 3
-1 2 3
-*/
