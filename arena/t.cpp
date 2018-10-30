@@ -61,14 +61,24 @@ void prin(vector < pair<ll,ll> > a){
 }
 #define vl vector <ll> 
 #define vvl vector <vector <ll> >
+#define vpl vector <pair <ll,ll> >
 
-
+bool f2(vl a,vl b){
+    if(a[2]>=b[2]&&a[1]>=b[1]&&a[0]>=b[0]){
+        if(a[2]>b[2]||a[1]>b[1]||a[0]>b[0])
+        return 1;
+    }
+    return 0;
+}
 int main()
 {
     ll tt=sc,kkk;
+
     f(kkk,tt){
-        ll n=sc,q=sc;
-        
+        // f(n)=(1/k)*f(n-1) + k-1/k (2+f(n-1))
+        ld n=sc,k=sc;
+        cout<<fixed<<setprecision(10)<<(2+((n-1)*2*(k-1))/k)<<'\n';
     }
+
     return 0;
 }
