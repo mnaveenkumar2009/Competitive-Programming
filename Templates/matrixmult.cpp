@@ -29,14 +29,15 @@ inline ll uscan()
 #define sc uscan()
 
 vector <vector <ll> > mul(vector <vector <ll> > &a,vector <vector <ll> > &b){
-    vector <vector <ll> > res(3,vector<ll> (3));
+    ll n=a.size();
+    vector <vector <ll> > res(n,vector<ll> (n));
     int i, j, k; 
-    for (i = 0; i < 3; i++) 
+    for (i = 0; i < n; i++)
     {
-        for (j = 0; j < 3; j++) 
+        for (j = 0; j < n; j++)
         {
             res[i][j] = 0;
-            for (k = 0; k < 3; k++)
+            for (k = 0; k < n; k++)
                 res[i][j] = (res[i][j]+(a[i][k]*b[k][j])%mod)%mod;
         }
     }
