@@ -14,10 +14,21 @@ int main()
     ll i,j;
     
     srand(time(NULL));
-    ll n=1e5-rand()%3;
-    cout<<n<<'\n';
+    ll n=1e2-rand()%3,q=1e2-rand()%2;
+    cout<<n<<' '<<q<<'\n';
     f(i,n){
-        cout<<(ll)(ran(2e9)-1e9)<<' ';
+        cout<<(ll)(ran(1e9))<<' ';
+    }
+    cout<<'\n';
+    while(q--){
+        if(q%2){
+            cout<<2<<' '<<ran(n)<<' '<<ran(1e9)<<'\n';
+        }
+        else{
+            ll l=ran(n),r=ran(n);
+            if(l>r)swap(l,r);
+            cout<<1<<' '<<l<<' '<<r<<'\n';
+        }
     }
    	return 0;
 }
