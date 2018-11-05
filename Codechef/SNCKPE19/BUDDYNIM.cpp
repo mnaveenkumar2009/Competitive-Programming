@@ -63,20 +63,35 @@ void prin(vector < pair<ll,ll> > a){
 #define vvl vector <vector <ll> >
 #define vpl vector <pair <ll,ll> >
 
+
 int main()
 {
     ll tt=sc,kkk;
+
     f(kkk,tt){
-        ll n=sc,k=sc;
-        while(n--){
-            k-=sc!=1;
+        ll n=sc,m=sc;
+        ll i,j,k;
+        vector <ll> a,b;
+        // ll sa=0,sb=0,m1=0,m2=0;
+        f(i,n){
+            a.pb(sc);
+            if(!a[a.size()-1])
+                a.pop_back();
         }
-        if(k<0){
-            cout<<"NO\n";
+        f(i,m){
+            b.pb(sc);
+            if(!b[b.size()-1])
+                b.pop_back();
+        }
+        sort1(a);
+        sort1(b);
+        if(a==b){
+            cout<<"Bob\n";
+            continue;
         }
         else{
-            cout<<"YES\n";
-        }   
+            cout<<"Alice\n";
+        }
     }
 
     return 0;
