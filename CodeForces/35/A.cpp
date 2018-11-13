@@ -12,8 +12,7 @@ using namespace std;
 #define pc putchar
 #define sort1(a) sort(a.begin(),a.end())
 #define sort2(a,n) sort(a,a+n)
-#define vvl vector <vector <ll> >
-#define vl vector <ll>
+
 inline ll uscan()
 {
     ll n=0,c=gc();
@@ -31,9 +30,16 @@ inline ll uscan()
     return n+(-2*check*n);
 }
 #define sc uscan()
+
 void prin(vector <ll> a){
     ll i;
     f(i,a.size()){
+        cout<<a[i]<<' ';
+    }pc('\n');
+}
+void prin(ll a[],ll n){
+    ll i;
+    f(i,n){
         cout<<a[i]<<' ';
     }pc('\n');
 }
@@ -46,25 +52,29 @@ void prin(vector <vector <ll> > a){
     }
     pc('\n');
 }
-void prin(vector <vector <pair <ll,ll> > > a){
+void prin(vector < pair<ll,ll> > a){
     ll i,j;
     f(i,a.size()){
-        f(j,a[i].size())
-            cout<<a[i][j].ss<<' ';
-        pc('\n');
+        cout<<a[i].ff<<' '<<a[i].ss<<'\n';
     }
     pc('\n');
 }
+#define vl vector <ll> 
+#define vvl vector <vector <ll> >
+#define vpl vector <pair <ll,ll> >
+
 int main()
 {
-    ll t=sc;
-    while(t--){
-        ll n=sc;
-        ll i,j,k;
-        vl a(n);
-        f(i,n){
-            a[i]=sc;
+    ll n=sc;
+    ll a[3]={0},i;
+    a[n-1]=1;
+    f(i,3){
+        swap(a[sc-1],a[sc-1]);
+    }
+    f(i,3){
+        if(a[i]==1){
+            cout<<i+1<<'\n';
         }
     }
-	return 0;
+    return 0;
 }
