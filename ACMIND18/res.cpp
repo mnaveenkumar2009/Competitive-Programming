@@ -12,8 +12,7 @@ using namespace std;
 #define pc putchar
 #define sort1(a) sort(a.begin(),a.end())
 #define sort2(a,n) sort(a,a+n)
-#define vl vector <ll> 
-#define vvl vector <vector <ll> >
+
 inline ll uscan()
 {
     ll n=0,c=gc();
@@ -31,9 +30,16 @@ inline ll uscan()
     return n+(-2*check*n);
 }
 #define sc uscan()
+
 void prin(vector <ll> a){
     ll i;
     f(i,a.size()){
+        cout<<a[i]<<' ';
+    }pc('\n');
+}
+void prin(ll a[],ll n){
+    ll i;
+    f(i,n){
         cout<<a[i]<<' ';
     }pc('\n');
 }
@@ -46,47 +52,26 @@ void prin(vector <vector <ll> > a){
     }
     pc('\n');
 }
-void prin(vector <vector <pair <ll,ll> > > a){
+void prin(vector < pair<ll,ll> > a){
     ll i,j;
     f(i,a.size()){
-        f(j,a[i].size())
-            cout<<a[i][j].ss<<' ';
-        pc('\n');
+        cout<<a[i].ff<<' '<<a[i].ss<<'\n';
     }
     pc('\n');
 }
+#define vl vector <ll> 
+#define vvl vector <vector <ll> >
+#define vpl vector <pair <ll,ll> >
 
-int main()
-{
+
+int main(){
     ll t=sc;
     while(t--){
-        ll n=sc,m=sc;
-        vvl a(n,vl(m,0));
+        ll n=sc;
         ll i,j,k;
-        vl ans(n+m-2);
+        vector <ll> a(n);
         f(i,n){
-            string s;
-            cin>>s;
-            f(j,m){
-                if(s[j]=='1'){
-                    a[i][j]=1;
-                }
-            }
+            a[i]=sc;
         }
-        prin(a);
-        vvl suml(n+m-1),sumr(n+m-1);
-        
-        f(i,n){
-            f(j,m){
-                if(a[i][j]){
-                    f(kkk,n+m-2){
-                        
-                    }
-                }
-            }
-        }
-        
-        f(i,m+n-2)cout<<ans[i]<<' ';pc('\n');
     }
-    return 0;
 }
