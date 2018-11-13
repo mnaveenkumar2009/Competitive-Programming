@@ -8,7 +8,7 @@ for i in range(number_of_cases):
         os.system("./a.out <temp> input/input"+str(i+0)+".txt")
     time.sleep(1)
 
-os.system("g++ answer.cpp")
+os.system("g++ soln.cpp")
 
 for i in range(number_of_cases):
     if i+0<10:
@@ -16,7 +16,7 @@ for i in range(number_of_cases):
     else:
         os.system("./a.out <input/input"+str(i+0)+".txt> output/output"+str(i+0)+".txt")
 
-os.system("g++ ansbrute.cpp")
+os.system("g++ brute.cpp")
 
 for i in range(number_of_cases):
     if i+0<10:

@@ -31,44 +31,9 @@ inline ll uscan()
     return n+(-2*check*n);
 }
 #define sc uscan()
-void prin(vector <ll> a){
-    ll i;
-    f(i,a.size()){
-        cout<<a[i]<<' ';
-    }pc('\n');
-}
-void prin(ll a[],ll n){
-    ll i;
-    f(i,n){
-        cout<<a[i]<<' ';
-    }pc('\n');
-}
-void prin(vector <vector <ll> > a){
-    ll i,j;
-    f(i,a.size()){
-        f(j,a[i].size())
-            cout<<a[i][j]<<' ';
-        pc('\n');
-    }
-    pc('\n');
-}
-void prin(vector <vector <pair <ll,ll> > > a){
-    ll i,j;
-    f(i,a.size()){
-        f(j,a[i].size())
-            cout<<a[i][j].ss<<' ';
-        pc('\n');
-    }
-    pc('\n');
-}
 
 int main()
 {
-    ll t=sc;
-    while(t--){
-        ll n=sc,k=sc;
-        string a,b;
-        cin>>a>>b;
-    }
+    
     return 0;
 }
