@@ -10,50 +10,25 @@ using namespace std;
 #define ld long double
 #define gc getchar
 #define pc putchar
-#define sort1(a) sort(a.begin(),a.end())
-#define sort2(a,n) sort(a,a+n)
+#define sort(a) sort(a.begin(),a.end())
+#define sortn(a,n) sort(a,a+n)
 #define vvl vector <vector <ll> >
 #define vl vector <ll>
-inline ll uscan()
-{
-    ll n=0,c=gc();
-    bool check=0;
-    if(c=='-')check=1;
-    while(c<'0'||c>'9')
-    {
-        c=gc();
-        if(c=='-')check=1;
-    }
-    while(c<='9'&&c>='0'){
-        n=n*10+c-'0';
-        c=gc();
-    }
-    return n+(-2*check*n);
+inline ll uscan(){
+    ll n=0,c=gc();bool check=0;
+    while(c<'0'||c>'9'){if(c=='-')check=1;c=gc();}
+    while(c<='9'&&c>='0'){n=n*10+c-'0';c=gc();}
+    return check?-n:n;
 }
 #define sc uscan()
 void prin(vector <ll> a){
-    ll i;
-    f(i,a.size()){
-        cout<<a[i]<<' ';
-    }pc('\n');
+    for(auto it:a)cout<<it<<' ';pc('\n');
 }
 void prin(vector <vector <ll> > a){
-    ll i,j;
-    f(i,a.size()){
-        f(j,a[i].size())
-            cout<<a[i][j]<<' ';
-        pc('\n');
-    }
-    pc('\n');
+    for(auto vec:a){for(auto it:vec)cout<<it<<' ';pc('\n');}pc('\n');
 }
-void prin(vector <vector <pair <ll,ll> > > a){
-    ll i,j;
-    f(i,a.size()){
-        f(j,a[i].size())
-            cout<<a[i][j].ss<<' ';
-        pc('\n');
-    }
-    pc('\n');
+void prin(vector <pair <ll,ll> > a){
+    for(auto it:a)cout<<it.ff<<' '<<it.ss<<'\n';pc('\n');
 }
 int main()
 {
