@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define f(i,n) for(i=0;i<n;i++)
+#define f(i,n) for(int i = 0; i < n; i++)
 #define pb push_back
 #define mod 1000000007
 #define mp make_pair
@@ -10,8 +10,8 @@ using namespace std;
 #define ld long double
 #define gc getchar
 #define pc putchar
-#define sort(a) sort(a.begin(),a.end())
-#define sortn(a,n) sort(a,a+n)
+#define sort(a) sort(a.begin(), a.end())
+#define sortn(a,n) sort(a, a+n)
 #define vvl vector <vector <ll> >
 #define vl vector <ll>
 inline ll uscan(){
@@ -32,13 +32,13 @@ void prin(vector <pair <ll,ll> > a){
 }
 int main()
 {
-    ll t=sc;
-    while(t--){
-        ll n=sc;
-        ll i,j,k;
+    ll t = 1;
+    t = sc;
+    f(kkk, t){
+        ll n = sc;
         vl a(n);
-        f(i,n){
-            a[i]=sc;
+        f(i, n){
+            a[i] = sc;
         }
     }
 	return 0;

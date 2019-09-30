@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define f(i, n) for(int i = 0; i < n; i++)
+#define f(i,n) for(int i=0;i<n;i++)
 #define pb push_back
 #define mod 1000000007
 #define mp make_pair
@@ -29,4 +29,38 @@ void prin(vector <vector <ll> > a){
 }
 void prin(vector <pair <ll,ll> > a){
     for(auto it:a)cout<<it.ff<<' '<<it.ss<<'\n';pc('\n');
+}
+int main()
+{
+    ll t=sc;
+    while(t--){
+        ll n = sc, q = sc;
+        vl a(n-1);
+        f(i,n - 1){
+            if(i&1)
+                a[i] = -sc;
+            else
+                a[i] = sc;
+            if(i)
+                a[i] += a[i-1];
+        }
+        while(q--){
+            ll l = sc - 1, r = sc - 1;
+            if(l>r)
+                swap(l, r);
+            ll ans = a[r - 1];
+            if(l)
+                ans -= a[l - 1];
+            if((r-l) % 2 == 1){
+                if( l&1){
+                    ans = -ans;
+                }
+                cout << ans <<'\n';
+            }
+            else{
+                cout<<"UNKNOWN\n";
+            }
+        }
+    }
+	return 0;
 }
