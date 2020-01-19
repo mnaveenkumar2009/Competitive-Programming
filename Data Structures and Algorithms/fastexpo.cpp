@@ -3,18 +3,16 @@ using namespace std;
 #define mod 1000000007
 int main(){
     #define int long long
-    int n,m;
-    int ans=1;
-    cin>>n>>m;
+    int n, m;
+    int ans = 1;
+    cin >> n >> m;
     while(m){
-        if(m&1){
+        if(m & 1){
             m--;
-            ans=(ans*n)%mod;
+            ans = (ans * n) % mod;
         }
-        else{
-            n=(n*n)%mod;
-            m>>=1;
-        }
+        n = (n * n) % mod;
+        m >>= 1;
     }
-    cout<<ans;
+    cout << ans << '\n';
 }

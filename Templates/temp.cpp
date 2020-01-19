@@ -32,6 +32,9 @@ void prin(vector <pair <ll,ll> > a){
 }
 int main()
 {
+    // ios_base::sync_with_stdio(false);
+    // cin.tie(0);
+    // cout.tie(0);
     ll t = 1;
     t = sc;
     f(kkk, t){

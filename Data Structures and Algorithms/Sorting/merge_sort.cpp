@@ -2,9 +2,8 @@
 using namespace std;
 
 int main(){
-
     int n;
-    cin>>n;
+    cin >> n;
     int a[n];
     for(int i = 0; i < n; i++)
         cin >> a[i];
@@ -15,8 +14,8 @@ int main(){
         int j = 0, b[n];
         for(int i = 0; i < number_of_blocks; i++){
             p = a + i * block_size;
-            q = p + block_size/2;
-            int *p_end = q,*q_end = min(p + block_size, a + n);
+            q = p + block_size / 2;
+            int *p_end = q, *q_end = min(p + block_size, a + n);
             if(q > q_end)
                 break;
             while( p!=p_end && q!=q_end ){
@@ -33,8 +32,7 @@ int main(){
         memcpy(a, b, sizeof(b));
         count++;
     }
-
-    for(int i = 0; i<n; i++)
-        cout<<a[i]<<' ';
-    cout<<'\n';
+    for(int i = 0; i < n; i++)
+        cout << a[i] << ' ';
+    cout << '\n';
 }

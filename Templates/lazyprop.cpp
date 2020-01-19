@@ -1,57 +1,52 @@
-void updateRange(ll node, ll start, ll end, ll l, ll r, ll val)
-{
-    if(lazy[node] != 0)
-    { 
-        // This node needs to be updated
-        tree[node] += (end - start + 1) * lazy[node];    // Update it
-        if(start != end)
-        {
-            lazy[node*2] += lazy[node];                  // Mark child as lazy
-            lazy[node*2+1] += lazy[node];                // Mark child as lazy
-        }
-        lazy[node] = 0;                                  // Reset it
-    }
-    if(start > end or start > r or end < l)              // Current segment is not within range [l, r]
-        return;
-    if(start >= l and end <= r)
-    {
-        // Segment is fully within range
-        tree[node] += (end - start + 1) * val;
-        if(start != end)
-        {
-            // Not leaf node
-            lazy[node*2] += val;
-            lazy[node*2+1] += val;
-        }
-        return;
-    }
-    ll mid = (start + end) / 2;
-    updateRange(node*2, start, mid, l, r, val);        // Updating left child
-    updateRange(node*2 + 1, mid + 1, end, l, r, val);   // Updating right child
-    tree[node] = tree[node*2] + tree[node*2+1];        // Updating root with max value 
+#define int long long
+const int N = 2e6 + 2;
+int n, h;
+int tree[2 * N], lazy[2 * N], Node_Siz[2 * N];
+
+void apply(int p, int value) {
+    tree[p] += value * Node_Siz[p];
+    if(p < n) lazy[p] += value;
 }
 
-ll queryRange(ll node, ll start, ll end, ll l, ll r)
-{
-    if(start > end or start > r or end < l)
-        return 0;         // Out of range
-    if(lazy[node] != 0)
-    {
-        // This node needs to be updated
-        tree[node] += (end - start + 1) * lazy[node];            // Update it
-        if(start != end)
-        {
-            lazy[node*2] += lazy[node];         // Mark child as lazy
-            lazy[node*2+1] += lazy[node];    // Mark child as lazy
+void push(int p) {
+    for(int s = h; s > 0; --s) {
+        int i = p >> s;
+        if(lazy[i] != 0) {
+            apply(i<<1, lazy[i]);
+            apply(i<<1|1, lazy[i]);
+            lazy[i] = 0;
         }
-        lazy[node] = 0;                 // Reset it
     }
-    if(start >= l and end <= r)             // Current segment is totally within range [l, r]
-        return tree[node];
-    ll mid = (start + end) / 2;
-    ll p1 = queryRange(node*2, start, mid, l, r);         // Query left child
-    ll p2 = queryRange(node*2 + 1, mid + 1, end, l, r); // Query right child
-    return (p1 + p2);
 }
-#define modify(l,r,x) updateRange(1,0,n-1,l,r,x)
-#define query(l,r) queryRange(1,0,n-1,l,r)
+
+void modify(int l, int r, int value) {
+    l += n, r += n;
+    int l0 = l, r0 = r - 1;
+    for (; l < r; l >>= 1, r >>= 1) {
+        if (l&1) apply(l++, value);
+        if (r&1) apply(--r, value);
+    }
+    while (l0 > 1) l0 >>= 1, tree[l0] = (tree[l0<<1] + tree[l0<<1|1]) + lazy[l0] * Node_Siz[l0];
+    while (r0 > 1) r0 >>= 1, tree[r0] = (tree[r0<<1] + tree[r0<<1|1]) + lazy[r0] * Node_Siz[r0];
+}
+
+int query(int l, int r) {
+    l += n, r += n;
+    push(l);
+    push(r - 1);
+    int res = 0;
+    for (; l < r; l >>= 1, r >>= 1) {
+        if (l&1) res += tree[l++];
+        if (r&1) res += tree[--r];
+    }
+    return res;
+}
+for(int i = n; i < 2 * n; i++){
+    Node_Siz[i] = 1;
+    lazy[i] = tree[i] = 0;
+}
+for(int i = n - 1; i >= 0; i--){
+    Node_Siz[i] = Node_Siz[i<<1] + Node_Siz[i<<1|1];
+    lazy[i] = tree[i] = 0;
+}
+h = sizeof(int) * 8 - __builtin_clz(n);
