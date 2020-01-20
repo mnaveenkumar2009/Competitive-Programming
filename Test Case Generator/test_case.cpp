@@ -5,6 +5,7 @@ using namespace std;
 #define mod 1000000007
 #define gc getchar
 #define ll long long
+#define ld long double
 
 ll ran(ll modu){
     return (rand()%modu)+1;
@@ -12,23 +13,19 @@ ll ran(ll modu){
 int main()
 {
     ll i,j;
-    
     srand(time(NULL));
-    ll n=1e2-rand()%3,q=1e2-rand()%2;
-    cout<<n<<' '<<q<<'\n';
-    f(i,n){
-        cout<<(ll)(ran(1e9))<<' ';
-    }
-    cout<<'\n';
-    while(q--){
-        if(q%2){
-            cout<<2<<' '<<ran(n)<<' '<<ran(1e9)<<'\n';
-        }
-        else{
-            ll l=ran(n),r=ran(n);
-            if(l>r)swap(l,r);
-            cout<<1<<' '<<l<<' '<<r<<'\n';
-        }
+    ll t=1e5;
+    cout<<t<<'\n';
+    while(t--){
+        int n = ran(1e9);
+        cout << n << '\n';
+        ld P = rand()%1001;
+        ld Q = rand()%(1001-(int)P);
+        ld R = 1000 - (P+Q);
+        P/=1000.0;
+        Q/=1000.0;
+        R/=1000.0;
+        cout << P << ' ' << Q << ' ' << R << '\n';
     }
    	return 0;
 }

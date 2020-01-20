@@ -1,43 +1,22 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define f(i,n) for(i=0;i<n;i++)
-#define pb push_back
-#define sd(n) scanf("%d",&n)
-#define sc(n) scanf("%c",&n)
-#define slld(n) scanf("%lld",&n)
-#define mod 1000000007
-#define mp make_pair
-#define ff first
-#define ss second
-#define ll long long
-#define ld long double
-#define gc getchar
-#define pc putchar
-inline ll uscan()
-{
-    ll n=0,c=gc();
-    bool check=0;
-    if(c=='-')check=1;
-    while(c<'0'||c>'9')
-    {
-        c=gc();
-        if(c=='-')check=1;
-    }
-    while(c<='9'&&c>='0'){
-        n=n*10+c-'0';
-        c=gc();
-    }
-    return n+(-2*check*n);
-}
 
 int main(){
-    ifstream x("o2.txt"),y("out.txt");
-    string s,r;
-    while(x>>s,y>>r){
-        // cout<<s<<'\n';
-        if(s!=r){
-            cout<<s<<'\n';
-            cout<<r<<'\n';
+    int n, m, q;
+    while(cin >> n >> m){
+        if(n == 0)break;
+        for(int i = 2; i*i <= max(25, n); i++){
+            int c = 0;
+            while(n % i == 0){
+                c++;
+                n /= i;
+            }
+            ans *= 2 * c + 1;
         }
+        if(n != 1){
+            ans *= 5;
+        }
+        cout << ans << '\n';
     }
+    return 0;
 }

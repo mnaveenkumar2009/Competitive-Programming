@@ -1,75 +1,57 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define f(i,n) for(i=0;i<n;i++)
-#define pb push_back
-#define mod 1000000007
-#define mp make_pair
-#define ff first
-#define ss second
-#define ll long long
-#define ld long double
-#define gc getchar
-#define pc putchar
-#define sort1(a) sort(a.begin(),a.end())
-#define sort2(a,n) sort(a,a+n)
+int t,smask;
 
-inline ll uscan()
-{
-    ll n=0,c=gc();
-    bool check=0;
-    if(c=='-')check=1;
-    while(c<'0'||c>'9')
-    {
-        c=gc();
-        if(c=='-')check=1;
-    }
-    while(c<='9'&&c>='0'){
-        n=n*10+c-'0';
-        c=gc();
-    }
-    return n+(-2*check*n);
-}
-#define sc uscan()
 
-void prin(vector <char> a){
-    ll i;
-    f(i,a.size()){
-        cout<<a[i];//<<' ';
-    }pc('\n');
-}
-void prin(vector <vector <ll> > a){
-    ll i,j;
-    f(i,a.size()){
-        f(j,a[i].size())
-            cout<<a[i][j]<<' ';
-        pc('\n');
-    }
-    pc('\n');
-}
-void prin(vector < pair<ll,ll> > a){
-    ll i,j;
-    f(i,a.size()){
-        cout<<a[i].ff<<' '<<a[i].ss<<'\n';
-    }
-    pc('\n');
-}
-#define vl vector <ll> 
-int main()
-{
-    ll t=sc;
-    while(t--){
-        ll n=sc,q=sc;
-        ll x1[3],x2[3],a[3],b[3],c[3],m[3];
-        ll i,j,k;
-        f(i,3){
-            x1[i]=sc;
-            x2[i]=sc;
-            a[i]=sc;
-            b[i]=sc;
+int main(){
+	cin>>t;
+	while(t--){
+		string s;
+		cin>>s;
+		smask=0;
+		int n=s.length();
+		for(auto it:s)smask|=(1<<(it-'0'));		
+		vector <vector <int> > dp(n,vector <int> (1024,0));
+        vector <int> pos(10,-1);
+
+        for(int i=0;i<n;i++)dp[i][0]=1;
+
+		dp[0][1<<(s[0]-'0')]=1;
+        pos[s[0]-'0']=0;
+		for(int i=1;i<n;i++){
+            // if(pos[s[i]-'0']==-1)
+		    dp[i][1<<(s[i]-'0')]=1;
+		    for(int mask=0;mask<1024;mask++){
+		        if((mask&(1<<(s[i]-'0')))){
+                    int maxi=0;
+                    for(int num=0;num<10;num++){
+                        if(pos[num]!=-1&&(mask&(1<<num)&&(num!=s[i]-'0'))){
+                            if(i==5&&mask==7){
+                                // cout<<num<<dp[pos[num]][mask^(1<<(s[i]-'0'))]<<' '<<dp[pos[num]][mask]<<' '<<(mask^(1<<(s[i]-'0')))<<'\n';
+                            }
+		                    dp[i][mask]+=dp[pos[num]][mask^(1<<(s[i]-'0'))];
+                            maxi=max(maxi,dp[pos[num]][mask]);
+                        }
+                    }
+                    dp[i][mask]+=maxi;
+		        }
+                else{
+                    // for(int num=0;num<10;num++)
+                    //     if(pos[num]!=-1&&(mask&(1<<num)&&(num!=s[i]-'0')))
+		            //         dp[i][mask]+=dp[pos[num]][mask];
+                }
+                // if(mask)
+                // dp[i][mask]+=dp[i-1][mask];
+                
+		    }
+            pos[s[i]-'0']=i;
+		}
+        for(int j=0;j<8;j++){
+        for(int i=0;i<n;i++){
             
+                cout<<dp[i][j]<<' ';
+            }cout<<'\n';
         }
-
-        cout<<"Case #"<<kkk+1<<": "<<ans<<'\n';
-    }
-    return 0;
+		cout<<dp[n-1][smask]<<'\n';
+	}
 }

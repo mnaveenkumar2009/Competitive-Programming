@@ -5,8 +5,8 @@ if(os.path.isfile('test.zip')):
 
 os.system("g++ test_case.cpp")
 
-number_of_cases=5
-x=5
+number_of_cases=8
+x=0
 for i in range(number_of_cases):
     if i+x<10:
         os.system("./a.out > input/input0"+str(i+x)+".txt")
