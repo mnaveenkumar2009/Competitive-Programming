@@ -5,7 +5,7 @@ if(os.path.isfile('test.zip')):
 
 os.system("g++ test_case.cpp")
 
-number_of_cases=8
+number_of_cases=2
 x=0
 for i in range(number_of_cases):
     if i+x<10:

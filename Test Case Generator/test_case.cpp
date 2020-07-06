@@ -1,31 +1,24 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define f(i,n) for(i=0;i<n;i++)
-#define pb push_back
-#define mod 1000000007
-#define gc getchar
-#define ll long long
-#define ld long double
+#define int long long
 
-ll ran(ll modu){
-    return (rand()%modu)+1;
+int ran(int x){
+	return (rand() % x) + 1;
 }
-int main()
-{
-    ll i,j;
-    srand(time(NULL));
-    ll t=1e5;
-    cout<<t<<'\n';
-    while(t--){
-        int n = ran(1e9);
-        cout << n << '\n';
-        ld P = rand()%1001;
-        ld Q = rand()%(1001-(int)P);
-        ld R = 1000 - (P+Q);
-        P/=1000.0;
-        Q/=1000.0;
-        R/=1000.0;
-        cout << P << ' ' << Q << ' ' << R << '\n';
-    }
-   	return 0;
+
+signed main(){
+	srand(time(0));
+	int t = 1e5;
+	cout << t << '\n';
+	while(t--){
+		int n, m;
+		n = ran(4) + 1, m = ran(4) + 1;
+		int x1 = ran(n);
+		int y1 = ran(m - 1);
+		int x2 = ran(n);
+		int y2 = y1 + ran(m - y1); // (y1 + 1) -> m =  y1 + (1 -> m - y1)
+
+		// y1 < y2;
+		cout << n << ' ' << m << ' ' << x1 << ' ' << y1 << ' ' << x2 << ' ' << y2 << '\n';
+	}
 }

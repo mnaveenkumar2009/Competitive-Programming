@@ -10,11 +10,6 @@ signed main(){
     while(t--){
         int x1, x2, y1, y2, n, m;
         cin >> n >> m >> x1 >> y1 >> x2 >> y2;
-        assert(y1 < y2);
-        assert(x1 <= n);
-        assert(x2 <= n);
-        assert(y1 <= m - 1);
-        assert(y2 > 1);
         // y1 < y2
         if(x1 == x2){
             cout << "Draw\n";
@@ -25,21 +20,17 @@ signed main(){
                 // = 2, knight promotion, = 1 captures in 1 move
                 cout << "Aunty\n";
             }
-            else{
+            else
                 cout << "Draw\n";
-            }
         }
         else{
             // only queen promotions
             if(abs(x1 - x2) == 1){
                 // captures on the way to queening
-                if(abs(y1 - y2) & 1){
-
+                if(abs(y1 - y2) & 1)
                     cout << "Aunty\n";
-                }
-                else{
+                else
                     cout << "Bunty\n";
-                }
             }
             else{
                 int t1 = m - y1, t2 = y2 - 1;
@@ -48,27 +39,22 @@ signed main(){
                     if(dir_attack){
                         cout << "Aunty\n";
                     }
-                    else{
+                    else
                         cout << "Draw\n";
-                    }
                 }
                 else{
                     if(t1 == t2 + 1){
                         if(dir_attack){
                             cout << "Bunty\n";
                         }
-                        else{
+                        else
                             cout << "Draw\n";
-                        }
                     }
                     else{
-                        if(t1 < t2){
-
+                        if(t1 < t2)
                             cout << "Aunty\n";
-                        }
-                        else{
+                        else
                             cout << "Bunty\n";
-                        }
                     }
                 }
             }
